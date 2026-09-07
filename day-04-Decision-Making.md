@@ -1,8 +1,4 @@
-🟢 Day 4 — Java if, else if, else
-
-You have finished the basics, variables, data types, and operators. Day 4 is important because now Java starts making decisions.
-
-🎯 Day 4 Topics
+🟢 Day 4 — Java if, else if, else,Nested if.
 Day 4
 │
 ├── 1. if statement
@@ -11,46 +7,45 @@ Day 4
 ├── 4. Nested if
 ├── 5. Multiple conditions
 ├── 6. Comparing numbers
-├── 7. Combining conditions with && and ||
-└── 8. Practice programs
 
-if
- ↓
-One condition
+Every if statement needs a condition that results in true or false.
+This means if statements work hand-in-hand with boolean values:
+Most often, conditions are created using comparison operators, like the ones below:
 
-if-else
- ↓
-Two choices
+Less than: a < b
+Less than or equal to: a <= b
+Greater than: a > b
+Greater than or equal to: a >= b
+Equal to: a == b
+Not equal to: a != b
+You can use these conditions to perform different actions for different decisions.
 
-if-else if-else
- ↓
-Multiple choices
+Java has the following conditional statements:
+Use if to specify a block of code to be executed, if a specified condition is true
+Use else to specify a block of code to be executed, if the same condition is false
+Use else if to specify a new condition to test, if the first condition is false
+Use switch to specify many alternative blocks of code to be executed
 
-nested if
- ↓
-Condition inside another condition
-
-1. if Statement
-if is used when you want Java to execute something only when a condition is true.
+1. The if Statement
+The if statement specifies a block of code to be executed if a condition is true:
 
 Syntax:
 if (condition) {
-    // code
+  // block of code to be executed if the condition is true
 }
+The condition inside the if statement must result in a boolean value - it can be either a boolean expression (like x > y) or a boolean variable (like isLightOn).
+
+Also note that if is in lowercase letters. Uppercase letters (If or IF) will generate an error.
+
+In the example below, we test two values to find out if 20 is greater than 18. If the condition is true, print some text:
 
 Example:
-int age = 20;
-if (age >= 18) {
-    System.out.println("You are eligible");
+if (20 > 18) {
+  System.out.println("20 is greater than 18");
 }
 
-Output:
-You are eligible
-Because:
-20 >= 18 → true
-If the condition is false, the code inside if doesn't execute.
-
 2. if-else
+ The else statement lets you run a block of code when the condition in the if statement is false.
 Use if-else when there are two possibilities.
 
 Example:
@@ -62,36 +57,23 @@ if (age >= 18) {
 }
 
 Output:
-Minor   age >= 18?
+Minor
+
+Think:
+
+          age >= 18?
           /       \
        true       false
         ↓           ↓
      Adult        Minor
-     
-3. Example: Pass or Fail
-This is a very common programming problem.
-int marks = 75;
-if (marks >= 40) {
-    System.out.println("Pass");
-} else {
-    System.out.println("Fail");
-}
 
-Output:
-Pass
-Change:
-int marks = 35;
+     Notes
+. else does not have a condition - it runs when the if condition is false.
+. Do not put a semicolon right after if (condition). That would end the statement early and make else behave unexpectedly.
 
-Output:
-Fail
-Notice that you didn't change the if condition. Only the input changed.
-That's the point of decision-making.
-
-4. else if
-
+3. else if
 Use else if when you have more than two possibilities.
 Example: grades.
-
 int marks = 85;
 if (marks >= 90) {
     System.out.println("Grade A+");
@@ -106,49 +88,13 @@ if (marks >= 90) {
 } else {
     System.out.println("Fail");
 }
-
 Output:
-
 Grade A
-How Java checks it
-For 85:
-85 >= 90 → false
-85 >= 80 → true  ← stops here
-
-It doesn't continue checking the remaining conditions.
-
-⚠️ Important: Order Matters
-This is wrong:
-
-if (marks >= 40) {
-    System.out.println("Pass");
-} else if (marks >= 80) {
-    System.out.println("Grade A");
-}
-
-For 85, Java sees:
-85 >= 40 → true
-So it prints:
-Pass
-It never reaches marks >= 80.
-Therefore, put more specific/higher conditions first:
-
-if (marks >= 90) {
-    ...
-} else if (marks >= 80) {
-    ...
-} else if (marks >= 40) {
-    ...
-} else {
-    ...
-}
-
-5. Multiple Conditions with &&
+4. logical
+Multiple Conditions with &&
 You already learned && on Day 3.
 Now use it with if.
-
-Example:
-
+Example: &&
 int age = 20;
 int marks = 75;
 if (age >= 18 && marks >= 40) {
@@ -156,17 +102,14 @@ if (age >= 18 && marks >= 40) {
 } else {
     System.out.println("Not Eligible");
 }
-
 Both conditions must be true.
 age >= 18  → true
 marks >= 40 → true
-
 true && true → true
-
 Output:
 Eligible
 
-6. Multiple Conditions with ||
+Multiple Conditions with ||
 Example:
 int marks = 85;
 if (marks >= 90 || marks < 40) {
@@ -174,251 +117,37 @@ if (marks >= 90 || marks < 40) {
 } else {
     System.out.println("Normal case");
 }
-
 At least one condition must be true.
-
-7. Nested if
-An if inside another if is called nested if.
+Use NOT (!) to reverse a condition:
 
 Example:
+Test if a is not greater than b:
+int a = 33;
+int b = 200;
+if (!(a > b)) {
+  System.out.println("a is NOT greater than b");
+}
+
+5. Nested if
+
+You can also place an if statement inside another if. This is called a nested if statement.
+A nested if lets you check for a condition only if another condition is already true.
+
+Syntax:
+if (condition1) {
+  // code to run if condition1 is true
+  if (condition2) {
+    // code to run if both condition1 and condition2 are true
+  }
+}
+Examaple:
 int age = 20;
 boolean hasId = true;
-
 if (age >= 18) {
- if (hasId) {
+    if (hasId) {
         System.out.println("Entry allowed");
     }
-
 }
-
-Output:
-
-Entry allowed
-
-The second condition is checked only if the first condition is true.
-
-🧪 Program 1 — Check Positive or Negative
-
-Create:
-
-PositiveNegative.java
-
-Write:
-
-int number = 10;
-
-if (number > 0) {
-    System.out.println("Positive");
-} else {
-    System.out.println("Negative");
-}
-
-Run:
-
-javac PositiveNegative.java
-java PositiveNegative
-
-Expected:
-
-Positive
-Test it again
-
-Change:
-
-int number = -5;
-
-Expected:
-
-Negative
-
-Then try:
-
-int number = 0;
-
-You'll notice a problem: 0 is neither positive nor negative.
-
-We'll fix that using else if.
-
-🧪 Program 2 — Positive, Negative, or Zero
-
-Create:
-
-NumberCheck.java
-
-Your program should produce:
-
-Positive
-
-for 10.
-
-Negative
-
-for -5.
-
-Zero
-
-for 0.
-
-Use:
-
-if
-else if
-else
-
-Don't copy the solution. Write it yourself.
-
-🧪 Program 3 — Pass or Fail
-
-Create:
-
-Result.java
-
-Use:
-
-marks = 75
-
-If marks are >= 40:
-
-Pass
-
-Otherwise:
-
-Fail
-
-Then test it with:
-
-35
-
-You should get:
-
-Fail
-🧪 Program 4 — Grade Calculator ⭐
-
-Create:
-
-Grade.java
-
-Use:
-
-marks = 85
-
-Rules:
-
-90–100 → A+
-80–89  → A
-70–79  → B
-60–69  → C
-40–59  → D
-Below 40 → Fail
-
-For:
-
-marks = 85
-
-Expected:
-
-Grade A
-
-Test at least these values:
-
-95
-85
-75
-65
-50
-30
-
-You should get different results.
-
-🧪 Program 5 — Even or Odd
-
-Create:
-
-EvenOdd.java
-
-Use:
-
-int number = 10;
-
-Hint:
-
-number % 2 == 0
-
-Expected:
-
-Even
-
-Then test:
-
-number = 7;
-
-Expected:
-
-Odd
-
-This combines Day 3 % with Day 4 if-else.
-
-🧪 Program 6 — Student Eligibility
-
-Use:
-age = 20
-marks = 75
-attendance = 85
-
-Student is eligible only when:
-age >= 18
-AND
-marks >= 40
-AND
-attendance >= 75
-
-Expected:
-
-Eligible
-
-This is important because you're combining:
-
-Variables
-+
-Relational operators
-+
-Logical operators
-+
-if-else
-
-That's how real programs start becoming useful.
-
-🔥 Day 4 Challenge
-
-Create:
-
-StudentResult.java
-
-Use:
-
-studentName = "Sravanthi"
-marks = 85
-
-Your program should:
-
-Print the student's name.
-Check whether the student passed.
-Print the grade.
-
-For 85, expected:
-
-Student Name: Sravanthi
-Result: Pass
-Grade: A
-
-Then test:
-
-marks = 35
-
-Expected:
-Student Name: Sravanthi
-Result: Fail
-Grade: Fail
-
-
-
+Notes:
+You can nest as many if statements as you want, but avoid making the code too deep - it can become hard to read.
+Nested if is often used together with else and else if for more complex decision making.
